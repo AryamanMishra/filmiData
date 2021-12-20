@@ -1,0 +1,124 @@
+<html>
+
+<head>
+    <title>
+        <%=movie%>
+    </title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+    <link rel="icon" href="/views/favicon/favicon.ico" type="image/x-icon">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        tr {
+            font-size: 20;
+            font-family: Karma;
+        }
+        
+        body {
+            background: linear-gradient(141deg, #000000, #353935);
+        }
+        
+        #leftbox {
+            float: left;
+            margin-top: 20;
+            width: 30%;
+            height: 455px;
+            margin-bottom: 30;
+        }
+        
+        #rightbox {
+            float: right;
+            margin-top: 20;
+            width: 70%;
+            height: 455px;
+            margin-bottom: 30;
+        }
+        
+        .button {
+            background-color: #E85A4F;
+            border: none;
+            color: black;
+            text-align: center;
+            font-size: 15px;
+            opacity: 1;
+            transition: 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+            height: 30px;
+            width: 70px;
+            font-family: Karma;
+        }
+        
+        .button:hover {
+            opacity: 0.6
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1 id="heading " style="color:#D8C3A5;margin-bottom:50;border-radius:10px; text-align:center;font-family: Karma;;background-color:#C3073F;font-size:50px;margin:40px; "><b>FilmData</b></h1>
+    <img src=<%=image%> style="display:block;color:white;height:455;width:350;float:left;margin:0px 40px 40px 20px;">
+
+    <% if(video=="") {%>
+        <h2 style="margin-bottom:470;color:#D8C3A5;font-family:Karma;">Trailer not available</h2>
+        <%}
+        else{%>
+            <iframe src='<%=video%>' style="height:455;width:1100;margin-bottom:40;"></iframe>
+            <%}%>
+
+                <table>
+
+                    <tr>
+                        <td style="color:#E85A4F;padding-right:50;">Actor</td>
+                        <td style="color:white;width:700;">
+                            <%=actor%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="color:#E85A4F;padding-right:50;">Director</td>
+                        <td style="color:white;width:700;">
+                            <%=director%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="color:#E85A4F;padding-right:50;">Genre</td>
+                        <td style="color:white;width:700;">
+                            <%=genre%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="color:#E85A4F;padding-right:50;">MovieTime</td>
+                        <td style="color:white;width:700;">
+                            <%=time%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="color:#E85A4F;padding-right:50;">Plot</td>
+                        <td style="color:white;width:700;">
+                            <%=plot%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="color:#E85A4F;padding-right:50;">ImDB Rating</td>
+                        <td style="color:white;width:700;">
+                            <%=rating%>
+                        </td>
+                    </tr>
+
+
+
+
+
+
+                </table>
+
+
+
+
+
+</body>
+
+</html>

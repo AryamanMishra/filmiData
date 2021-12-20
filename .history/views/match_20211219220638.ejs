@@ -1,0 +1,249 @@
+<html>
+
+<head>
+    <title>
+        <%=movie%>
+    </title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+    <link rel="icon" href="/views/favicon/favicon.ico" type="image/x-icon">
+    <!--to include icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(141deg, #000000, #353935);
+        }
+        
+        #leftbox {
+            float: left;
+            margin-top: 20;
+            width: 30%;
+            height: 455px;
+            margin-bottom: 30;
+        }
+        
+        #rightbox {
+            float: right;
+            margin-top: 20;
+            width: 70%;
+            height: 455px;
+            margin-bottom: 30;
+        }
+        
+        .button {
+            background-color: #E85A4F;
+            border: none;
+            color: black;
+            text-align: center;
+            font-size: 15px;
+            opacity: 1;
+            transition: 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+            height: 30px;
+            width: 70px;
+            font-family: Karma;
+        }
+        
+        .button:hover {
+            opacity: 0.6
+        }
+    </style>
+
+</head>
+
+
+<h1 id="heading " style="color:#D8C3A5;margin-bottom:50;border-radius:10px; text-align:center;font-family: Karma;;background-color:#C3073F;font-size:50px;margin:40px; "><b>FilmData</b></h1>
+<script>
+    let video = document.createElement('iframe');
+    video.height = 400;
+    video.width = 900;
+    video.style.marginBottom = 40;
+    let img = document.createElement('img');
+    fetch('https://imdb-api.com/en/API/Title/k_3pxoshah/<%=id%>')
+    img.src = <%=image%>;
+    img.style.display = 'block';
+    img.alt = "image couldn't load -_-";
+    img.style.color = 'white';
+    img.height = 455;
+    img.width = 350;
+    img.style.float = 'left';
+    img.style.marginRight = 40;
+    img.style.marginBottom = 40;
+    img.style.marginLeft = 20;
+    document.body.appendChild(img);
+    fetch('https://imdb-api.com/en/API/YouTubeTrailer/k_3pxoshah/<%=id%>')
+        .then((res) => {
+            return res.json()
+        })
+        .then((data) => {
+                console.log(data.videoUrl);
+                if (data.videoUrl == "" || data.videoUrl == null) {
+                    console.log("not there");
+                    let h = document.createElement('h2');
+                    h.textContent = "Trailer not available >_<"
+                    h.style.marginBottom = 470;
+                    h.style.color = 'white';
+                    h.style.fontFamily = 'Karma';
+
+                    document.body.appendChild(h);
+                } else {
+                    let url = `${data.videoUrl.replace('watch?v=', 'embed/')}`;
+                    video.src = `${url}`;
+                    video.height = 455;
+                    video.width = 1100;
+                    document.body.appendChild(video);
+                }
+                let tble = document.createElement('TABLE');
+
+                let row1 = tble.insertRow(0);
+
+                let cell11 = row1.insertCell(0);
+                let cell12 = row1.insertCell(1);
+
+                let row2 = tble.insertRow(1);
+                let cell21 = row2.insertCell(0);
+                let cell22 = row2.insertCell(1);
+                let row3 = tble.insertRow(2);
+                let cell31 = row3.insertCell(0);
+                let cell32 = row3.insertCell(1);
+                let row4 = tble.insertRow(3);
+                let cell41 = row4.insertCell(0);
+                let cell42 = row4.insertCell(1);
+                let row5 = tble.insertRow(4);
+                let cell51 = row5.insertCell(0);
+                let cell52 = row5.insertCell(1);
+                let row6 = tble.insertRow(5);
+                let cell61 = row6.insertCell(0);
+                let cell62 = row6.insertCell(1);
+                document.body.appendChild(tble);
+
+                fetch('https://imdb-api.com/en/API/Title/k_3pxoshah/<%=id%>')
+                    .then((res) => {
+                        return res.json()
+                    })
+                    .then((data) => {
+                        console.log(data);
+
+                        // for actor details
+
+                        row1.style.fontSize = 20;
+                        row1.style.marginTop = 2
+                        row1.style.fontFamily = 'Karma';
+                        cell11.style.color = '#E85A4F';
+
+                        cell12.style.color = 'white';
+                        cell11.style.paddingRight = 50;
+                        cell12.style.width = 700;
+                        cell11.innerHTML = 'Actors';
+                        cell12.innerHTML = `${data.stars}`;
+                        if (data.stars == "" || data.stars == null) {
+                            cell12.innerHTML = "Actor's name not available";
+                            cell12.style.textDecoration = "underline";
+                        } else
+                            cell22.innerHTML = `${data.directors}`;
+
+
+                        // for director detail
+
+                        row2.style.fontSize = 20;
+                        row2.style.fontFamily = 'Karma';
+                        cell21.style.color = '#E85A4F';
+
+                        cell22.style.color = 'white';
+                        cell21.style.paddingRight = 50;
+                        cell22.style.width = 700;
+                        cell21.innerHTML = 'Director';
+                        if (data.directors == "" || data.directors == null) {
+                            cell22.innerHTML = "director name not available";
+                            cell22.style.textDecoration = "underline";
+                        } else
+                            cell22.innerHTML = `${data.directors}`;
+
+
+
+                        //for genre detail
+
+                        row3.style.fontSize = 20;
+                        row3.style.fontFamily = 'Karma';
+                        cell31.style.color = '#E85A4F';
+
+                        cell32.style.color = 'white';
+                        cell31.style.paddingRight = 50;
+                        cell32.style.width = 700;
+                        cell31.innerHTML = 'Genre';
+
+                        if (data.genres == "" || data.genres == null) {
+                            cell32.innerHTML = "Genre not available";
+                            cell32.style.textDecoration = "underline";
+                        } else
+                            cell32.innerHTML = `${data.genres}`;
+
+
+
+
+                        // for plot
+
+                        row4.style.fontSize = 20;
+                        row4.style.fontFamily = 'Karma';
+                        cell41.style.color = '#E85A4F';
+
+                        cell42.style.color = 'white';
+                        cell41.style.paddingRight = 50;
+                        cell42.style.width = 700;
+                        cell41.innerHTML = 'Plot';
+                        if (data.plot == "" || data.plot == null) {
+                            cell42.innerHTML = "plot not available";
+                            cell42.style.textDecoration = "underline";
+                        } else
+                            cell42.innerHTML = `${data.plot}`;
+
+
+                        //for movie time
+                        row5.style.fontSize = 20;
+                        row5.style.fontFamily = 'Karma';
+                        cell51.style.color = '#E85A4F';
+
+                        cell52.style.color = 'white';
+                        cell51.style.paddingRight = 50;
+                        cell52.style.width = 700;
+                        cell51.innerHTML = 'Duration';
+                        if (data.runtimeMins == "" || data.runtimeMins == null) {
+                            cell52.innerHTML = "runTime not available";
+                            cell52.style.textDecoration = "underline";
+                        } else {
+                            let time = parseInt(data.runtimeMins);
+                            cell52.innerHTML = `${Math.floor(time/60)} hr ${time%60} min`;
+                        }
+
+
+                        // imdb rating
+                        row6.style.fontSize = 20;
+                        row6.style.fontFamily = 'Karma';
+                        cell61.style.color = '#E85A4F';
+
+                        cell62.style.color = 'white';
+                        cell61.style.paddingRight = 50;
+                        cell62.style.width = 700;
+                        cell61.innerHTML = 'imdbRating';
+                        if (data.imDbRating == "" || data.imDbRating == null) {
+                            cell62.innerHTML = "imDb rating not available";
+                            cell62.style.textDecoration = "underline";
+                        } else
+
+
+                            cell62.innerHTML = `${data.imDbRating}/10`;
+
+
+                    })
+</script>
+
+
+
+</body>
+
+</html>

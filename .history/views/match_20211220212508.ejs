@@ -1,0 +1,165 @@
+<html>
+
+<head>
+    <title>
+        <%=fullTitle%>
+    </title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        tr {
+            font-size: 20;
+            font-family: Karma;
+        }
+        
+        body {
+            background: linear-gradient(141deg, #000000, #353935);
+        }
+        
+        #leftbox {
+            float: left;
+            margin-top: 20;
+            width: 30%;
+            height: 455px;
+            margin-bottom: 30;
+        }
+        
+        #rightbox {
+            float: right;
+            margin-top: 20;
+            width: 70%;
+            height: 455px;
+            margin-bottom: 30;
+        }
+        
+        .button {
+            background-color: #E85A4F;
+            border: none;
+            color: black;
+            text-align: center;
+            font-size: 15px;
+            opacity: 1;
+            transition: 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+            height: 30px;
+            width: 70px;
+            font-family: Karma;
+        }
+        
+        .button:hover {
+            opacity: 0.6
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1 id="heading " style="color:#D8C3A5;margin-bottom:50;border-radius:10px; text-align:center;font-family: Karma;;background-color:#C3073F;font-size:50px;margin:40px; "><b>FilmData</b></h1>
+    <a><i class="fa fa-home" style="color:white;font-size:48px;float:right;"></i></a>
+    <br><br>
+    <img src=<%=image%> style="display:block;color:white;height:455;width:350;float:left;margin:0px 40px 40px 20px;">
+
+    <% if(video=="" || video==null) {%>
+        <h2 style="margin-bottom:470;color:#D8C3A5;font-family:Karma;">Trailer not available</h2>
+        <%}
+        else{%>
+            <iframe src='<%=video%>' style="height:455;width:900;margin-bottom:40;"></iframe>
+            <%}%>
+
+                <table>
+
+                    <tr>
+                        <td style="color:#E85A4F;padding-right:50;">Actor</td>
+
+                        <%if (actor == "" || actor == null) {%>
+                            <td style="color:white;width:700;"><u>Actor's name not available</u></td>
+
+                            <%} else{%>
+
+                                <td style="color:white;width:700;">
+                                    <%=actor%>
+                                </td>
+                                <%}%>
+                    </tr>
+                    <tr>
+                        <td style="color:#E85A4F;padding-right:50;">Director</td>
+                        <%if (director == "" || director == null) {%>
+                            <td style="color:white;width:700;"><u>Director's name not available</u></td>
+
+                            <%} else{%>
+
+                                <td style="color:white;width:700;">
+                                    <%=director%>
+                                </td>
+                                <%}%>
+                    </tr>
+                    <tr>
+                        <td style="color:#E85A4F;padding-right:50;">Genre</td>
+                        <%if (genre == "" || genre == null) {%>
+                            <td style="color:white;width:700;"><u>Genre not available</u></td>
+
+                            <%} else{%>
+
+                                <td style="color:white;width:700;">
+                                    <%=genre%>
+                                </td>
+                                <%}%>
+                    </tr>
+                    <tr>
+                        <td style="color:#E85A4F;padding-right:50;">MovieTime</td>
+                        <%if (time == "" || time == null) {%>
+                            <td style="color:white;width:700;"><u>Movie Time not available</u></td>
+
+                            <%} else{%>
+
+                                <td style="color:white;width:700;">
+                                    <%=Math.floor(time/60)%>hrs
+                                        <%=time%60%>mins
+                                </td>
+                                <%}%>
+                    </tr>
+                    <tr>
+                        <td style="color:#E85A4F;padding-right:50;">Plot</td>
+                        <%if (plot == "" || plot == null) {%>
+                            <td style="color:white;width:700;"><u>plot not available</u></td>
+
+                            <%} else{%>
+
+                                <td style="color:white;width:700;">
+                                    <%=plot%>
+                                </td>
+                                <%}%>
+                    </tr>
+                    <tr>
+                        <td style="color:#E85A4F;padding-right:50;">ImDB Rating</td>
+                        <%if (rating == "" || rating== null) {%>
+                            <td style="color:white;width:700;"><u>Rating not available</u></td>
+
+                            <%} else{%>
+
+                                <td style="color:white;width:700;">
+                                    <%=rating%>/10
+                                </td>
+                                <%}%>
+                    </tr>
+
+
+
+
+
+
+                </table>
+
+
+
+
+
+</body>
+
+</html>
