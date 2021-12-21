@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }))
 
 app.get('/', async(req, res) => {
 
-    let a = await axios.get('https://imdb-api.com/en/API/ComingSoon/k_jazr8em7')
+    let a = await axios.get('https://imdb-api.com/en/API/ComingSoon/k_3pxoshah')
     let mov = [];
     let data = a.data.items;
     let arr = [];
@@ -22,7 +22,7 @@ app.get('/', async(req, res) => {
     }
 
     for (el of arr) {
-        let pos = await axios.get(`https://imdb-api.com/en/API/Posters/k_jazr8em7/${el}`)
+        let pos = await axios.get(`https://imdb-api.com/en/API/Posters/k_3pxoshah/${el}`)
 
         mov.push(pos.data.backdrops[0].link);
     }
@@ -32,7 +32,7 @@ app.get('/', async(req, res) => {
 
 app.get('/:movie', async(req, res) => {
     let movie = req.params.movie;
-    let movieList = await axios.get(`https://imdb-api.com/en/API/SearchTitle/k_jazr8em7/${movie}`);
+    let movieList = await axios.get(`https://imdb-api.com/en/API/SearchTitle/k_3pxoshah/${movie}`);
     let imgi = [];
     let title = [];
     let id = [];
@@ -46,14 +46,14 @@ app.get('/:movie', async(req, res) => {
 })
 app.get('/:movie/:id', async(req, res) => {
     const { movie, id } = req.params;
-    let imag = await axios.get(`https://imdb-api.com/en/API/Title/k_jazr8em7/${id}`)
+    let imag = await axios.get(`https://imdb-api.com/en/API/Title/k_3pxoshah/${id}`)
     image = imag.data.image;
-    let video = await axios.get(`https://imdb-api.com/en/API/YouTubeTrailer/k_jazr8em7/${id}`)
+    let video = await axios.get(`https://imdb-api.com/en/API/YouTubeTrailer/k_3pxoshah/${id}`)
     video = video.data.videoUrl;
     console.log(video);
     if (video != null && video != "")
         video = `${video.replace('watch?v=', 'embed/')}`;
-    let details = await axios.get(`https://imdb-api.com/en/API/Title/k_jazr8em7/${id}`)
+    let details = await axios.get(`https://imdb-api.com/en/API/Title/k_3pxoshah/${id}`)
     let actor = details.data.stars;
     let director = details.data.directors;
     let genre = details.data.genres;
