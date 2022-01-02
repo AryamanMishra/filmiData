@@ -20,13 +20,12 @@ app.get('/', async(req, res) => {
         title.push(movie.fullTitle);
         date.push(movie.releaseState);
     }
-
+    console.log(arr)
     for (el of arr) {
         let pos = await axios.get(`https://imdb-api.com/API/Posters/k_v4pkaxw1/${el}`)
 
-        if ((pos.data.backdrops[0] != null && pos.data.backdrops[0] != ""))
-            mov.push(pos.data.backdrops[0].link)
-
+        mov.push(pos.data.backdrops[0].link);
+        break;
 
     }
 
